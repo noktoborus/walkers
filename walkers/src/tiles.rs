@@ -57,6 +57,7 @@ pub trait TilesManager {
     fn at(&mut self, tile_id: TileId) -> Option<Texture>;
     fn attribution(&self) -> Attribution;
     fn tile_size(&self) -> u32;
+    fn available_zoom(&self) -> Vec<u8>;
 }
 
 /// Downloads the tiles via HTTP. It must persist between frames.
@@ -156,6 +157,10 @@ impl TilesManager for Tiles {
 
     fn tile_size(&self) -> u32 {
         self.tile_size
+    }
+
+    fn available_zoom(&self) -> Vec<u8> {
+        return Vec::from_iter(0..=19);
     }
 }
 
